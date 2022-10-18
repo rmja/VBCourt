@@ -1,4 +1,11 @@
-import Aurelia from "aurelia";
-import { MyApp } from "./my-app";
+import { clearPlayer, initialState, setPlayer } from "./state";
 
-Aurelia.app(MyApp).start();
+import { App } from "./app";
+import Aurelia from "aurelia";
+import { StateDefaultConfiguration } from "@aurelia/state";
+
+Aurelia.register(
+  StateDefaultConfiguration.init(initialState, setPlayer, clearPlayer)
+)
+  .app(App)
+  .start();
