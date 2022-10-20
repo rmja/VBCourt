@@ -1,4 +1,5 @@
 import { DI } from "aurelia";
+import { IApiClient } from "../api/client";
 
 export const IAuthService = DI.createInterface<IAuthService>(
   "IAuthService",
@@ -7,32 +8,38 @@ export const IAuthService = DI.createInterface<IAuthService>(
 export type IAuthService = AuthService;
 
 export class AuthService {
-  private loggedIn = false;
+  private athleteId: number | null = null;
 
-  constructor() {
-    this.loggedIn = !!sessionStorage.getItem("authenticated") ?? false;
+  get isLoggedIn() {
+    return !!this.athleteId;
   }
 
-  async login(username: string, password: string) {
-    if (username === "user" && password === "password") {
-      sessionStorage.setItem("authenticated", "true");
+  constructor(@IApiClient private api: IApiClient) {
+    const item = sessionStorage.getItem("authenticated");
+    this.athleteId = item ? Number(item) : null;
+  }
 
-      this.loggedIn = true;
-
-      return true;
+  async login(email: string, phone: string) {
+    const athlete = await this.api.athletes.lookup({ email, phone }).transfer();
+    if (!athlete) {
+      this.athleteId = null;
+      return false;
     }
 
-    this.loggedIn = false;
-
-    return false;
+    sessionStorage.setItem("authenticated", athlete.id.toString());
+    this.athleteId = athlete.id;
+    return true;
   }
 
   logout() {
     sessionStorage.removeItem("authenticated");
-    this.loggedIn = false;
+    this.athleteId = null;
   }
 
-  get isLoggedIn() {
-    return this.loggedIn;
+  getUser() {
+    if (!this.athleteId) {
+      return Promise.reject();
+    }
+    return Promise.resolve({ athleteId: this.athleteId });
   }
 }

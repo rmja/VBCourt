@@ -1,22 +1,17 @@
-import { IApiClient } from "../../api/client";
-import { IStore } from "@aurelia/state";
-import { IState, StateAction } from "../../state";
 import { IRouteableComponent, IRouter } from "@aurelia/router";
+import { IAuthService } from "../../services/auth-service";
 
 export class LookupAthlete implements IRouteableComponent {
   public phone = "123456";
   public email = "rmja@test.dk";
   constructor(
-    @IApiClient private api: IApiClient,
-    @IStore private store: IStore<IState>,
+    @IAuthService private auth: IAuthService,
     @IRouter private router: IRouter
   ) {}
 
   public async lookup() {
-    const athlete = await this.api.athletes
-      .lookup({ phone: this.phone, email: this.email })
-      .transfer();
-    if (!athlete) {
+    const success = await this.auth.login(this.email, this.phone);
+    if (!success) {
       debugger;
       // FIXME: This does not navigate to the "create" route,
       // even though the same "../create" is specified in the view model
@@ -30,7 +25,6 @@ export class LookupAthlete implements IRouteableComponent {
       return;
     }
 
-    await this.store.dispatch(StateAction.setPlayer, athlete.id);
-    this.router.load("/teams");
+    this.router.load("../teams");
   }
 }

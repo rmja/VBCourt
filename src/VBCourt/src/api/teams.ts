@@ -26,7 +26,7 @@ export const create = (team: { name: string }) => ({
   },
 }); // http.post("/Teams").withJson(team).expectJson(Team)
 
-export const getAllByPlayer = (playerId: number) => ({
+export const getAllByAthlete = (athleteId: number) => ({
   transfer: () =>
-    Promise.resolve([{ id: 1, name: "Herrepadle", number: 123456 }]),
+    Promise.resolve(storage),
 });
