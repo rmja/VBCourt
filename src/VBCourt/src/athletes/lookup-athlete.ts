@@ -1,7 +1,7 @@
 import { ApiClient } from "../api/client";
 import { inject } from "aurelia";
 import { IStore } from "@aurelia/state";
-import { IState, setPlayer } from "../state";
+import { IState, StateAction } from "../state";
 import { IRouteableComponent, IRouter } from "@aurelia/router";
 
 @inject()
@@ -32,7 +32,7 @@ export class LookupAthlete implements IRouteableComponent {
       return;
     }
 
-    await this.store.dispatch(setPlayer, athlete.id);
+    await this.store.dispatch(StateAction.setPlayer, athlete.id);
     this.router.load("/teams");
   }
 }

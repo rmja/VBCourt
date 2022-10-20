@@ -1,4 +1,4 @@
-import { IState, setPlayer } from "../state";
+import { IState, StateAction } from "../state";
 import { IStore } from "@aurelia/state";
 
 import { ApiClient } from "../api/client";
@@ -30,6 +30,6 @@ export class CreateAthlete implements IRouteableComponent {
         phone: this.name,
     }).transfer();
 
-    await this.store.dispatch(setPlayer, player);
+    await this.store.dispatch(StateAction.setPlayer, player.id);
   }
 }
