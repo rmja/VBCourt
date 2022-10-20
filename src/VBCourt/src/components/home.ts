@@ -12,7 +12,7 @@ export class Home implements IRouteViewModel {
     if (!this.auth.isLoggedIn) {
       // FIXME: This does not work - apparently we cannot redirect into a sub-route
       // It only redirects to /athletes and not to its lookup sub route
-      return "/athletes/lookup";
+      // return "/athletes/lookup";
     }
 
     return true;    

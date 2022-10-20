@@ -4,8 +4,8 @@ import { IState, StateAction } from "../../state";
 import { IRouteableComponent, IRouter } from "@aurelia/router";
 
 export class LookupAthlete implements IRouteableComponent {
-  public phone = "";
-  public email = "";
+  public phone = "123456";
+  public email = "rmja@test.dk";
   constructor(
     @IApiClient private api: IApiClient,
     @IStore private store: IStore<IState>,
