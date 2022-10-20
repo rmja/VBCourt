@@ -1,9 +1,8 @@
-import { IRouteViewModel, Params, inject } from "aurelia";
+import { IRouteViewModel, Params } from "aurelia";
 
 import { IApiClient } from "../../api/client";
 import { DateTime } from "luxon";
 
-@inject()
 export class ListGames implements IRouteViewModel {
   public games!: GameViewModel[];
 

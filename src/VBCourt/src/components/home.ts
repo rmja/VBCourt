@@ -1,9 +1,8 @@
-import { IRouteViewModel, inject } from "aurelia";
+import { IRouteViewModel } from "aurelia";
 
 import { IAuthService } from "../services/auth-service";
 import { Parameters } from "@aurelia/router";
 
-@inject()
 export class Home implements IRouteViewModel {
   constructor(@IAuthService private auth: IAuthService) {
   }

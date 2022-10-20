@@ -22,7 +22,7 @@ export const create = (team: { name: string }) => ({
   transfer: () => {
     const item = new Team({id: storage.length + 1, number: Math.round(Math.random() * 10000), ...team});
     storage.push(item);
-    return item;
+    return Promise.resolve(item);
   },
 }); // http.post("/Teams").withJson(team).expectJson(Team)
 
