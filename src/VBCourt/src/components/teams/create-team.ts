@@ -15,7 +15,7 @@ export class CreateTeam {
 
   constructor(
     private api: ApiClient,
-    @inject(IRouter) private router: IRouter
+    @IRouter private router: IRouter
   ) {}
 
   public async create() {

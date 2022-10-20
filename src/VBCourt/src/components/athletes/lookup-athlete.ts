@@ -10,8 +10,8 @@ export class LookupAthlete implements IRouteableComponent {
   public email = "";
   constructor(
     private api: ApiClient,
-    @inject(IStore) private store: IStore<IState>,
-    @inject(IRouter) private router: IRouter
+    @IStore private store: IStore<IState>,
+    @IRouter private router: IRouter
   ) {}
 
   public async lookup() {

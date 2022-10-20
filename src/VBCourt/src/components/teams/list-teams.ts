@@ -11,7 +11,7 @@ export class ListTeams implements IRouteableComponent {
 
   constructor(
     private api: ApiClient,
-    @inject(IStore) private store: IStore<IState>
+    @IStore private store: IStore<IState>
   ) {}
 
   public async loading(params: Parameters) {

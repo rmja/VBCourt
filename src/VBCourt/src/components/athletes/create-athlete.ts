@@ -11,7 +11,7 @@ export class CreateAthlete implements IRouteableComponent {
   public email = "";
   public phone = "";
 
-  constructor(private api: ApiClient, @inject(IStore) private store: IStore<IState>) {}
+  constructor(private api: ApiClient, @IStore private store: IStore<IState>) {}
 
   public canLoad() {
     debugger;
