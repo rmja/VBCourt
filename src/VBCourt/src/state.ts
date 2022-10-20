@@ -1,8 +1,5 @@
 export interface IState {
-  player?: {
-    id: number;
-    name: string;
-  };
+  playerId?: number;
 }
 
 export const initialState: IState = {};
@@ -10,13 +7,19 @@ export const initialState: IState = {};
 export const setPlayer = (
   state: IState,
   action: unknown,
-  player: { id: number; name: string }
+  playerId: number
 ): IState => {
-  return { ...state, player };
+  if (action !== setPlayer) {
+    return state;
+  }
+  return { ...state, playerId };
 };
 
 export const clearPlayer = (state: IState, action: unknown): IState => {
+  if (action !== clearPlayer) {
+    return state;
+  }
   const newState = { ...state };
-  delete newState.player;
+  delete newState.playerId;
   return newState;
 };

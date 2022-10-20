@@ -1,0 +1,13 @@
+<button type="button">Tilføj hold</button>
+
+<a load="../hello">CREATE IN LIST TEAMS</a>
+
+<!-- FIXME: Including this line makes the page unable to load-->
+<!-- <a load="route: ../hello">CREATE IN LIST TEAMS</a> -->
+
+Her er alle hold:
+<ul>
+  <li repeat.for="team of teams">
+    <a load="../${team.id}/games">${team.name} (${team.number})</a>
+  </li>
+</ul>

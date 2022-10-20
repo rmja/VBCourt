@@ -8,14 +8,20 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "@aurelia/state": "^2.0.0-alpha.41",
-    "aurelia": "latest"
+    "@aurelia/router": "^2.0.0-alpha.41",
+    "@aurelia/state": "latest",
+    "@utiliread/http": "^1.17.8",
+    "@utiliread/json": "^1.1.2",
+    "@utiliread/jsonpatch": "^1.0.4",
+    "aurelia": "latest",
+    "luxon": "^3.0.4"
   },
   "devDependencies": {
     "@aurelia/testing": "latest",
     "@aurelia/ts-jest": "latest",
     "@aurelia/webpack-loader": "latest",
     "@types/jest": "^28.1.1",
+    "@types/luxon": "^3.0.2",
     "@types/node": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
