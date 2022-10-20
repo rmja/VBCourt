@@ -14,7 +14,10 @@ import { RouterConfiguration } from "@aurelia/router";
 import { StateDefaultConfiguration } from "@aurelia/state";
 
 Aurelia.register(
-  RouterConfiguration.customize({ useUrlFragmentHash: false }),
+  RouterConfiguration.customize({
+    // Enable pushState routing
+    useUrlFragmentHash: false,
+  }),
   StateDefaultConfiguration.init(
     rehydrateState("state") ?? initialState,
     stateHandler

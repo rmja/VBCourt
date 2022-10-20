@@ -1,6 +1,6 @@
-import { IRouteViewModel, Params, inject, route } from "aurelia";
+import { IRouteViewModel, Params, inject } from "aurelia";
 
-import { ApiClient } from "../api/client";
+import { ApiClient } from "../../api/client";
 import { DateTime } from "luxon";
 
 @inject()

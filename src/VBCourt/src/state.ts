@@ -13,6 +13,7 @@ export enum StateAction {
   clearPlayer = "clearPlayer",
 }
 
+// FIXME: This seems very error prone - how to do this better?
 export const stateHandler = (
   state: IState,
   action: unknown,

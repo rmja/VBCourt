@@ -1,8 +1,8 @@
 import { inject } from "aurelia";
 
-import { ApiClient } from "../api/client";
-import { Athlete } from "../api/athletes";
-import { IState } from "../state";
+import { ApiClient } from "../../api/client";
+import { Athlete } from "../../api/athletes";
+import { IState } from "../../state";
 import { Patch } from "@utiliread/jsonpatch";
 import { fromState } from "@aurelia/state";
 import { IRouter } from "@aurelia/router";

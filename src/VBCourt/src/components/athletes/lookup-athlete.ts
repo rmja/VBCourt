@@ -1,7 +1,7 @@
-import { ApiClient } from "../api/client";
+import { ApiClient } from "../../api/client";
 import { inject } from "aurelia";
 import { IStore } from "@aurelia/state";
-import { IState, StateAction } from "../state";
+import { IState, StateAction } from "../../state";
 import { IRouteableComponent, IRouter } from "@aurelia/router";
 
 @inject()

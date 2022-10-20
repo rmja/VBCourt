@@ -1,5 +1,5 @@
 import { IRouteViewModel } from "aurelia";
-import { IState } from "./state";
+import { IState } from "../state";
 import { Parameters } from "@aurelia/router";
 import { fromState } from "@aurelia/state";
 
