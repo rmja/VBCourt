@@ -1,6 +1,6 @@
 import { inject } from "aurelia";
 
-import { ApiClient } from "../../api/client";
+import { IApiClient } from "../../api/client";
 import { IState } from "../../state";
 import { IStore } from "@aurelia/state";
 import { IRouteableComponent, Parameters } from "@aurelia/router";
@@ -10,7 +10,7 @@ export class ListTeams implements IRouteableComponent {
   teams: TeamViewModel[] = [];
 
   constructor(
-    private api: ApiClient,
+    @IApiClient private api: IApiClient,
     @IStore private store: IStore<IState>
   ) {}
 

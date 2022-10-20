@@ -1,6 +1,6 @@
 import { inject } from "aurelia";
 
-import { ApiClient } from "../../api/client";
+import { IApiClient } from "../../api/client";
 import { Athlete } from "../../api/athletes";
 import { IState } from "../../state";
 import { Patch } from "@utiliread/jsonpatch";
@@ -14,7 +14,7 @@ export class CreateTeam {
   public name = "";
 
   constructor(
-    private api: ApiClient,
+    @IApiClient private api: IApiClient,
     @IRouter private router: IRouter
   ) {}
 

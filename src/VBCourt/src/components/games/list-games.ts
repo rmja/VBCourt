@@ -1,13 +1,13 @@
 import { IRouteViewModel, Params, inject } from "aurelia";
 
-import { ApiClient } from "../../api/client";
+import { IApiClient } from "../../api/client";
 import { DateTime } from "luxon";
 
 @inject()
 export class ListGames implements IRouteViewModel {
   public games!: GameViewModel[];
 
-  constructor(private api: ApiClient) {}
+  constructor(@IApiClient private api: IApiClient) {}
 
   public async loading(params: Params) {
     const teamId = Number(params.teamId);

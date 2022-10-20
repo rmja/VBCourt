@@ -1,15 +1,13 @@
-import { ApiClient } from "../../api/client";
-import { inject } from "aurelia";
+import { IApiClient } from "../../api/client";
 import { IStore } from "@aurelia/state";
 import { IState, StateAction } from "../../state";
 import { IRouteableComponent, IRouter } from "@aurelia/router";
 
-@inject()
 export class LookupAthlete implements IRouteableComponent {
   public phone = "";
   public email = "";
   constructor(
-    private api: ApiClient,
+    @IApiClient private api: IApiClient,
     @IStore private store: IStore<IState>,
     @IRouter private router: IRouter
   ) {}
