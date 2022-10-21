@@ -17,7 +17,8 @@ export class CreateGame {
   ) {}
 
   public load(params: Parameters) {
-    // FIXME: Why is params.teamId not defined here???
+    // FIXME: Why is params.teamId not defined here when we refresh this page?
+    // i.e. not read from the url. It is only defined if we navigate to here from "list-games"
     this.teamId = Number(params.teamId);
   }
 
