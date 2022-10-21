@@ -14,12 +14,17 @@ export class Game {
   time!: DateTime;
 
   @jsonProperty()
-  minPlayers!: number;
+  minPlayers: number = 0;
 
   @jsonProperty()
   maxPlayers?: number;
 
-  constructor(init?: Readonly<Game>) {
+  @jsonProperty()
+  athletes: { athleteId: number; priority: number }[] = [];
+
+  constructor(
+    init?: Readonly<Omit<Game, "minPlayers" | "athletes"> & Partial<Game>>
+  ) {
     Object.assign(this, init);
   }
 }
@@ -29,5 +34,5 @@ const storage = [
 ];
 
 export const getAll = (teamId: number) => ({
-  transfer: () => Promise.resolve(storage.filter(x => x.teamId === teamId))
+  transfer: () => Promise.resolve(storage.filter((x) => x.teamId === teamId)),
 }); // http.get(`/Teams/${teamId}/Games`).expectJsonArray(Game);

@@ -1,6 +1,7 @@
 import { IRoute, IRouteableComponent } from "@aurelia/router";
 
 import { CreateTeam } from "./create-team";
+import { JoinTeam } from "./join-team";
 import { ListTeams } from "./list-teams";
 import { customElement } from "aurelia";
 
@@ -18,6 +19,10 @@ export class TeamsIndex implements IRouteableComponent {
       id: "hello",
       path: "create",
       component: CreateTeam,
+    },
+    {
+      path: "join",
+      component: JoinTeam,
     },
     {
       id: "games",

@@ -28,7 +28,7 @@ const storage = [
     id: 1,
     name: "Rasmus",
     email: "rmja@test.dk",
-    phone: "123456",
+    phone: "12345678",
     teams: [],
   }),
   new Athlete({

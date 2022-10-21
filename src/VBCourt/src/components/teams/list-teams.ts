@@ -11,6 +11,7 @@ export class ListTeams implements IRouteableComponent {
   ) {}
 
   public async loading(params: Parameters) {
+    debugger;
     const user = await this.auth.getUser();
     const teams = await this.api.teams.getAllByAthlete(user.athleteId).transfer();
     this.teams = teams;

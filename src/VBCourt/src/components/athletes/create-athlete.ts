@@ -24,7 +24,6 @@ export class CreateAthlete implements IRouteableComponent {
     instruction: RoutingInstruction,
     navigation: Navigation
   ) {
-    // FIXME: This looks weird
     if (navigation.data) {
       const { email, phone } = navigation.data;
       this.email = email as string;

@@ -1,0 +1,19 @@
+<form submit.delegate="join()">
+    <div>
+        <label class="form-label">Holdnummer</label>
+        <input class="form-control" type="number" value.bind="number" required>
+    </div>
+    <div if.bind="passwordRequired">
+        <label class="form-label">Kode</label>
+        <input class="form-control" type="password" value.bind="password" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Tilføj hold</button>
+
+    <div class="alert alert-danger" if.bind="error === 'not-found'">
+        Der blev ikke fundet et hold med holdnummer ${number}.
+    </div>
+
+    <div class="alert alert-danger" if.bind="error === 'wrong-password'">
+        Forkert kode
+    </div>
+</form>
