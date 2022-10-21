@@ -25,7 +25,7 @@ export class CreateAthlete implements IRouteableComponent {
   }
 
   public async submit() {
-    const player = await this.api.athletes
+    const athlete = await this.api.athletes
       .create({
         name: this.name,
         email: this.email,
@@ -33,6 +33,9 @@ export class CreateAthlete implements IRouteableComponent {
       })
       .transfer();
 
-    await this.store.dispatch(StateAction.setPlayer, player.id);
+    await this.auth.login(athlete.email, athlete.phone);
+    // FIXME: How to load relative to the root router in app.ts?
+    // "teams" is a path there...
+    await this.router.load("/teams");
   }
 }
