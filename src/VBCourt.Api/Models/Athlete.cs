@@ -10,7 +10,7 @@ namespace VBCourt.Api.Models
         [MaxLength(200)]
         public string Email { get; set; }
         public int Phone { get; set; }
-        public ICollection<AthleteTeam>? Teams { get; }
+        public ICollection<Membership>? Memberships { get; }
 
         public Athlete(string name, string email, int phone)
         {

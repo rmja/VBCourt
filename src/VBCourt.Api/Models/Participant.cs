@@ -1,6 +1,6 @@
 ﻿namespace VBCourt.Api.Models
 {
-    public record class Participant(int GameId, int AthleteId)
+    public record class Participant(int Id, int GameId, int AthleteId)
     {
         public Game? Game { get; init; }
         public Athlete? Athlete { get; init; }
