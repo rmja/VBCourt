@@ -17,7 +17,9 @@ namespace VBCourt.Api
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Team>().HasIndex(x => x.Number).IsUnique();
             modelBuilder.Entity<AthleteTeam>().HasKey(x => new { x.AthleteId, x.TeamId });
+            modelBuilder.Entity<Participant>().HasKey(x => new { x.GameId, x.AthleteId });
         }
     }
 }

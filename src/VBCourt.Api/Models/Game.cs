@@ -8,5 +8,6 @@
         public int MinPlayers { get; set; }
         public int? MaxPlayers { get; set; }
         public Team? Team { get; }
+        public ICollection<Participant>? Participants { get; set; }
     }
 }
