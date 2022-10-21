@@ -1,3 +1,4 @@
+import { Membership } from "./memberships";
 import { Operation } from "@utiliread/jsonpatch";
 import { http } from "./http";
 import { jsonProperty } from "@utiliread/json";
@@ -15,10 +16,10 @@ export class Athlete {
   @jsonProperty()
   phone!: string;
 
-  @jsonProperty()
-  teams!: number[];
+  @jsonProperty({ type: Membership })
+  memberships: Membership[] = [];
 
-  constructor(init?: Readonly<Athlete>) {
+  constructor(init?: Readonly<Omit<Athlete, "memberships">> & Partial<Athlete>) {
     Object.assign(this, init);
   }
 }
@@ -29,14 +30,12 @@ const storage = [
     name: "Rasmus",
     email: "rmja@test.dk",
     phone: "12345678",
-    teams: [],
   }),
   new Athlete({
     id: 2,
     name: "Henrik",
     email: "henrik@test.dk",
     phone: "112233",
-    teams: [],
   }),
 ];
 
@@ -46,7 +45,11 @@ export const create = (athlete: {
   phone: string;
 }) => ({
   transfer: () => {
-    const item = new Athlete({ id: storage.length + 1, ...athlete, teams: [] });
+    const item = new Athlete({
+      id: storage.length + 1,
+      ...athlete,
+      memberships: [],
+    });
     storage.push(item);
     return Promise.resolve(item);
   },

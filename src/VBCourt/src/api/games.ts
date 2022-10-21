@@ -23,7 +23,7 @@ export class Game {
   athletes: { athleteId: number; priority: number }[] = [];
 
   constructor(
-    init?: Readonly<Omit<Game, "minPlayers" | "athletes"> & Partial<Game>>
+    init?: Readonly<Omit<Game, "minPlayers" | "athletes">> & Partial<Game>
   ) {
     Object.assign(this, init);
   }
