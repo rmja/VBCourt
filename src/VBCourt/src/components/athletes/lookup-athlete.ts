@@ -12,15 +12,12 @@ export class LookupAthlete implements IRouteableComponent {
   public async lookup() {
     const success = await this.auth.login(this.email, this.phone);
     if (!success) {
-      debugger;
-      // FIXME: This does not navigate to the "create" route,
-      // even though the same "../create" is specified in the view model
-      // where it actually works.
       await this.router.load("../create", {
         parameters: {
           phone: this.phone,
           email: this.email,
         },
+        context: this
       });
       return;
     }

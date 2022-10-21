@@ -1,9 +1,7 @@
-import { IRouteViewModel } from "aurelia";
-
 import { IAuthService } from "../services/auth-service";
-import { Parameters } from "@aurelia/router";
+import { IRouteableComponent, Parameters } from "@aurelia/router";
 
-export class Home implements IRouteViewModel {
+export class Home implements IRouteableComponent {
   constructor(@IAuthService private auth: IAuthService) {
   }
 

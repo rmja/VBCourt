@@ -8,7 +8,7 @@ export interface IState {
 
 export const initialState: IState = {};
 
-export enum StateAction {
+export const enum StateAction {
   setPlayer = "setPlayer",
   clearPlayer = "clearPlayer",
 }
