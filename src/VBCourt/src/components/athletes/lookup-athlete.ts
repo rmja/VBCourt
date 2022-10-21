@@ -24,6 +24,10 @@ export class LookupAthlete implements IRouteableComponent {
       return;
     }
 
-    this.router.load("../teams");
+    // FIXME: This only works if the component in app.ts is specified as
+    // { path: "teams", component: import("./components/teams"), }
+    // This does not work
+    // { path: "teams", component: () => import("./components/teams"), }
+    await this.router.load("/teams");
   }
 }

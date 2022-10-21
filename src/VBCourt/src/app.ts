@@ -13,7 +13,7 @@ export class App implements ICustomElementViewModel {
     },
     {
       path: "teams",
-      component: () => import("./components/teams"),
+      component: import("./components/teams"),
     },
   ];
   public message = "Hello World!";
