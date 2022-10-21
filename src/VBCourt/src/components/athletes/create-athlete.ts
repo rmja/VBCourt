@@ -41,8 +41,10 @@ export class CreateAthlete implements IRouteableComponent {
       .transfer();
 
     await this.auth.login(athlete.email, athlete.phone);
-    // FIXME: How to load relative to the root router in app.ts?
-    // "teams" is a path there...
+    // FIXME: This only works if the component in app.ts is specified as
+    // { path: "teams", component: import("./components/teams"), }
+    // This does not work
+    // { path: "teams", component: () => import("./components/teams"), }
     await this.router.load("/teams");
   }
 }

@@ -12,11 +12,11 @@ import { customElement } from "aurelia";
 export class TeamsIndex implements IRouteableComponent {
   static routes: IRoute[] = [
     {
+      id: "list",
       path: "",
       component: ListTeams,
     },
     {
-      id: "hello",
       path: "create",
       component: CreateTeam,
     },
