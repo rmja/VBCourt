@@ -10,7 +10,8 @@ HER ER SPIL
 
 <ul>
   <li repeat.for="game of games">
-    ${game.time}
+    ${game.starts}
+    ${game.ends}
     <span if.bind="game.participants == game.maxParticipants"> Fuldt </span>
     <span else> ${game.participants}/${game.maxParticipants} </span>
   </li>

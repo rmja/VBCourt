@@ -1,7 +1,19 @@
 <form submit.trigger="create()">
     <div>
+        <label class="form-label">Starter</label>
+        <input class="form-control" type="datetime-local" value.bind="starts | datetimeLocal">
+    </div>
+    <div>
+        <label class="form-label">Slutter</label>
+        <input class="form-control" type="datetime-local" value.bind="ends | datetimeLocal">
+    </div>
+    <div>
         <label class="form-label">Min. antal deltagere</label>
-        <input class="form-control" min="0" max="100" value.bind="">
+        <input class="form-control" type="number" min="0" max="100" value.bind="minParticipants">
+    </div>
+    <div>
+        <label class="form-label">Max. antal deltagere</label>
+        <input class="form-control" type="number" min="0" max="100" value.bind="maxParticipants">
     </div>
     <button class="btn btn-primary">Opret spil</button>
 </form>

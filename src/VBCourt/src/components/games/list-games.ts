@@ -19,7 +19,8 @@ export class ListGames implements IRouteViewModel {
 }
 
 interface GameViewModel {
-  time: DateTime;
+  starts: DateTime;
+  ends: DateTime;
   minParticipants: number;
   maxParticipants?: number;
   participants: number;
