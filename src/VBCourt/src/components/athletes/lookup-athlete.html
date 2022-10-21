@@ -1,20 +1,22 @@
 <form submit.delegate="lookup()">
   <div>
-    <label class="form-label">Mobilnummer</label>
-    <input
-      class="form-control"
-      type="tel"
-      value.bind="phone"
-      placeholder="12345678"
-    />
-  </div>
-  <div>
     <label class="form-label">E-mail</label>
     <input
       class="form-control"
       type="email"
       value.bind="email"
       placeholder="E-mail"
+      required
+    />
+  </div>
+  <div>
+    <label class="form-label">Mobilnummer</label>
+    <input
+      class="form-control"
+      type="tel"
+      value.bind="phone"
+      placeholder="12345678"
+      required
     />
   </div>
   <button class="btn btn-primary" type="submit">Log ind</button>

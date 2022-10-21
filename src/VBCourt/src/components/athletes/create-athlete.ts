@@ -1,5 +1,11 @@
 import { IApiClient } from "../../api/client";
-import { IRouteableComponent, IRouter, Parameters } from "@aurelia/router";
+import {
+  IRouteableComponent,
+  IRouter,
+  Navigation,
+  Parameters,
+  RoutingInstruction,
+} from "@aurelia/router";
 import { IAuthService } from "../../services/auth-service";
 
 export class CreateAthlete implements IRouteableComponent {
@@ -13,15 +19,17 @@ export class CreateAthlete implements IRouteableComponent {
     @IAuthService private auth: IAuthService
   ) {}
 
-  public canLoad() {
-    debugger;
-    return true;
-  }
-
-  public loading(params: Parameters) {
+  public loading(
+    params: Parameters,
+    instruction: RoutingInstruction,
+    navigation: Navigation
+  ) {
     // FIXME: This looks weird
-    this.email = (params.email as string) ?? "";
-    this.phone = (params.phone as string) ?? "";
+    if (navigation.data) {
+      const { email, phone } = navigation.data;
+      this.email = email as string;
+      this.phone = phone as string;
+    }
   }
 
   public async submit() {

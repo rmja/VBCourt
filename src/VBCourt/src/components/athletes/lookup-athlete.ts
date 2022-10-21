@@ -2,22 +2,24 @@ import { IRouteableComponent, IRouter } from "@aurelia/router";
 import { IAuthService } from "../../services/auth-service";
 
 export class LookupAthlete implements IRouteableComponent {
-  public phone = "123456";
   public email = "rmja@test.dk";
+  public phone = "12345678";
   constructor(
     @IAuthService private auth: IAuthService,
     @IRouter private router: IRouter
   ) {}
 
   public async lookup() {
-    const success = await this.auth.login(this.email, this.phone);
+    const email = this.email;
+    const phone = this.phone;
+    const success = await this.auth.login(email, phone);
     if (!success) {
       await this.router.load("../create", {
-        parameters: {
-          phone: this.phone,
-          email: this.email,
+        data: {
+          email,
+          phone,
         },
-        context: this
+        context: this,
       });
       return;
     }
