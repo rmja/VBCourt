@@ -1,9 +1,9 @@
-import { IRouter, Parameters } from "@aurelia/router";
+import { IRouteableComponent, IRouter, Parameters } from "@aurelia/router";
 import { observable } from "aurelia";
 import { DateTime } from "luxon";
 import { IApiClient } from "../../api/client";
 
-export class CreateGame {
+export class CreateGame implements IRouteableComponent {
   private teamId!: number;
   public minParticipants = 0;
   public maxParticipants = 0;
@@ -16,7 +16,7 @@ export class CreateGame {
     @IRouter private router: IRouter
   ) {}
 
-  public load(params: Parameters) {
+  public loading(params: Parameters) {
     // FIXME: Why is params.teamId not defined here when we refresh this page?
     // i.e. not read from the url. It is only defined if we navigate to here from "list-games"
     this.teamId = Number(params.teamId);
