@@ -22,7 +22,7 @@ export class TeamsIndex implements IRouteableComponent {
     {
       id: "games",
       path: ":teamId/games",
-      component: import("../games"),
+      component: () => import("../games"),
     },
   ];
 }
