@@ -19,10 +19,12 @@ export class Athlete {
   @jsonProperty({ type: Membership })
   memberships: Membership[] = [];
 
-  constructor(init?: Readonly<Omit<Athlete, "memberships">> & Partial<Athlete>) {
+  constructor(init?: AthleteInit) {
     Object.assign(this, init);
   }
 }
+
+export type AthleteInit = Omit<Athlete, "id" | "memberships"> & Partial<Athlete>;
 
 const storage = [
   new Athlete({
@@ -39,15 +41,11 @@ const storage = [
   }),
 ];
 
-export const create = (athlete: {
-  name: string;
-  email: string;
-  phone: string;
-}) => ({
+export const create = (init: AthleteInit) => ({
   transfer: () => {
     const item = new Athlete({
       id: storage.length + 1,
-      ...athlete,
+      ...init,
       memberships: [],
     });
     storage.push(item);

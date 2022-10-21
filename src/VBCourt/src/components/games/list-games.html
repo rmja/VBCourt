@@ -6,10 +6,12 @@ HER ER SPIL
     This is only true if navigating from "list-games". If we navigate from "create-team" then it works.
  -->
 
+<a class="btn btn-secondary" load="../create">Tilføj spil</a>
+
 <ul>
   <li repeat.for="game of games">
     ${game.time}
-    <span if.bind="game.players == game.maxPlayers"> Fuldt </span>
-    <span else> ${game.players}/${game.maxPlayers} </span>
+    <span if.bind="game.participants == game.maxParticipants"> Fuldt </span>
+    <span else> ${game.participants}/${game.maxParticipants} </span>
   </li>
 </ul>

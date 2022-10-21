@@ -29,7 +29,7 @@ export class Team {
   }
 }
 
-export type TeamInit = Readonly<Omit<Team, "id" | "number" | "hasPassword" | "members">> &
+export type TeamInit = Omit<Team, "id" | "number" | "hasPassword" | "members"> &
   Partial<Team>;
 
 const storage = [

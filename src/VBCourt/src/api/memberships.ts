@@ -16,7 +16,7 @@ export class Membership {
   }
 }
 
-export type MembershipInit = Readonly<Omit<Membership, "id">>;
+export type MembershipInit = Omit<Membership, "id"> & Partial<Membership>;
 
 export const join = (
   athleteId: number,

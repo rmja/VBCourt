@@ -14,24 +14,28 @@ export class Game {
   time!: DateTime;
 
   @jsonProperty()
-  minPlayers: number = 0;
+  minParticipants: number = 0;
 
   @jsonProperty()
-  maxPlayers?: number;
+  maxParticipants?: number;
 
   @jsonProperty()
-  athletes: { athleteId: number; priority: number }[] = [];
+  participants: { athleteId: number; priority: number }[] = [];
 
-  constructor(
-    init?: Readonly<Omit<Game, "minPlayers" | "athletes">> & Partial<Game>
-  ) {
+  constructor(init?: GameInit) {
     Object.assign(this, init);
   }
 }
 
+export type GameInit = Omit<Game, "id" | "minPlayers" | "participants"> &
+  Partial<Game>;
+
 const storage = [
-  new Game({ id: 1, teamId: 1, time: DateTime.local(), minPlayers: 4 }),
+  new Game({ id: 1, teamId: 1, time: DateTime.local(), minParticipants: 4 }),
 ];
+
+export const create = (teamId: number, init: Omit<GameInit, "teamId">) =>
+  http.post(`/Teams/${teamId}/Games`).withJson(init).expectJson(Game);
 
 export const getAll = (teamId: number) => ({
   transfer: () => Promise.resolve(storage.filter((x) => x.teamId === teamId)),
