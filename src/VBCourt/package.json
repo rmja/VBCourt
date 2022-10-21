@@ -14,6 +14,7 @@
     "@utiliread/json": "^1.1.2",
     "@utiliread/jsonpatch": "^1.0.4",
     "aurelia": "latest",
+    "bootstrap": "^5.2.2",
     "luxon": "^3.0.4"
   },
   "devDependencies": {

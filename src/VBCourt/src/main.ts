@@ -1,5 +1,6 @@
 import "@utiliread/http/json";
 import "@utiliread/http/jsonpatch";
+import "bootstrap/dist/css/bootstrap.css"
 
 import {
   initialState,
@@ -22,7 +23,20 @@ Aurelia.register(
     rehydrateState("state") ?? initialState,
     stateHandler
   ),
-  persistStatePlugin("state")
+  persistStatePlugin("state"),
+
+  // FASTAdapter,
+  // DialogDefaultConfiguration,
 )
   .app(App)
   .start();
+
+// provideFASTDesignSystem().register(
+//   fastCard(),
+//   fastTextField(),
+//   fastTreeView(),
+//   fastTreeItem(),
+//   fastDialog(),
+//   fastTabs(),
+//   fastButton()
+// );

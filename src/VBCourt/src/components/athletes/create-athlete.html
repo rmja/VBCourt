@@ -1,9 +1,33 @@
-Det lader ikke til at du er oprettet som atlet.
-Hvis du allerede mener at være oprettet så <a load="/athletes/lookup">klik her</a>.
+Det lader ikke til at du er oprettet som atlet. Hvis du allerede mener at være
+oprettet så <a load="/athletes/lookup">klik her</a>.
 
 <form submit.delegate="submit()">
-  <input type="text" value.bind="name" placeholder="Navn" />
-  <input type="tel" value.bind="phone" placeholder="Mobilnummer" disabled />
-  <input type="email" value.bind="email" placeholder="E-mail" disabled />
-  <button type="submit">Opret mig som atlet</button>
+  <div>
+    <label class="form-label">Navn</label>
+    <input
+      class="form-control"
+      type="text"
+      value.bind="name"
+      placeholder="Navn"
+    />
+  </div>
+  <div>
+    <label class="form-label">Mobilnummer</label>
+    <input
+      class="form-control"
+      type="tel"
+      value.bind="phone"
+      placeholder="Mobilnummer"
+    />
+  </div>
+  <div>
+    <label class="form-label">E-mail</label>
+    <input
+      class="form-control"
+      type="email"
+      value.bind="email"
+      placeholder="E-mail"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit">Opret mig som atlet</button>
 </form>

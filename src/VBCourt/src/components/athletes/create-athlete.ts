@@ -1,8 +1,6 @@
-import { IState, StateAction } from "../../state";
-import { IStore } from "@aurelia/state";
-
 import { IApiClient } from "../../api/client";
-import { IRouteableComponent, Parameters } from "@aurelia/router";
+import { IRouteableComponent, IRouter, Parameters } from "@aurelia/router";
+import { IAuthService } from "../../services/auth-service";
 
 export class CreateAthlete implements IRouteableComponent {
   public name = "";
@@ -11,7 +9,8 @@ export class CreateAthlete implements IRouteableComponent {
 
   constructor(
     @IApiClient private api: IApiClient,
-    @IStore private store: IStore<IState>
+    @IRouter private router: IRouter,
+    @IAuthService private auth: IAuthService
   ) {}
 
   public canLoad() {
@@ -20,8 +19,9 @@ export class CreateAthlete implements IRouteableComponent {
   }
 
   public loading(params: Parameters) {
-    debugger;
-    this.email;
+    // FIXME: This looks weird
+    this.email = (params.email as string) ?? "";
+    this.phone = (params.phone as string) ?? "";
   }
 
   public async submit() {
