@@ -3,41 +3,39 @@ import { IState, IStore } from "@aurelia/state";
 import { AppTask } from "aurelia";
 
 export interface IState {
-  playerId?: number;
+  phone?: number;
+  email?: string;
 }
 
 export const initialState: IState = {};
 
-export const enum StateAction {
-  setPlayer = "setPlayer",
-  clearPlayer = "clearPlayer",
+interface ISetAthleteDetailsAction {
+  type: "set-athlete-details";
+  phone: number;
+  email: string;
 }
 
-// FIXME: This seems very error prone - how to do this better?
 export const stateHandler = (
   state: IState,
-  action: unknown,
-  ...params: any[]
+  action2: unknown
 ) => {
-  switch (action) {
-    case StateAction.setPlayer:
-      return setPlayer(state, params[0]);
-    case StateAction.clearPlayer:
-      return clearPlayer(state);
+  const action = action2 as ISetAthleteDetailsAction;
+  switch (action.type) {
+    case "set-athlete-details":
+      return { ...state, phone: action.phone, email: action.email };
     default:
       return state;
   }
 };
 
-const setPlayer = (state: IState, playerId: number): IState => {
-  return { ...state, playerId };
-};
-
-const clearPlayer = (state: IState): IState => {
-  const newState = { ...state };
-  delete newState.playerId;
-  return newState;
-};
+export const setAthleteDetails = (
+  phone: number,
+  email: string
+): ISetAthleteDetailsAction => ({
+  type: "set-athlete-details",
+  phone,
+  email,
+});
 
 export const rehydrateState = (stateKey: string): IState | null =>
   JSON.parse(localStorage.getItem(stateKey) ?? "null") ?? null;
